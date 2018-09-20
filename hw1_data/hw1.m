@@ -102,31 +102,6 @@ switch I
         figure, imshow(img); title('img gbrg');            
 end
 
-%% trash1
-% temp = zeros(size(img,1)+2, size(img,2)+2);
-% temp(2:1+size(img,1), 2:1+size(img,2)) = img;
-
-% grbg = zeros(2,2,3);
-% grbg(1,1,2) = 1;
-% grbg(1,2,1) = 1;
-% grbg(2,1,3) = 1;
-% grbg(2,2,2) = 1;
-% rggb = zeros(2,2,3);
-% rggb(1,1,1) = 1;
-% rggb(1,2,2) = 1;
-% rggb(2,1,2) = 1;
-% rggb(2,2,3) = 1;
-% bggr = zeros(2,2,3);
-% bggr(1,1,3) = 1;
-% bggr(1,2,2) = 1;
-% bggr(2,1,2) = 1;
-% bggr(2,1,1) = 1;
-% gbrg = zeros(2,2,3);
-% gbrg(1,1,2) = 1;
-% gbrg(1,2,3) = 1;
-% gbrg(2,1,1) = 1;
-% gbrg(2,2,2) = 1;
-
 % img_r = img
 
 %% WHITE BALANCING (20 POINTS)
