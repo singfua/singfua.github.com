@@ -5,13 +5,14 @@
 <h2>1) TOY PROBLEM</h2>
 <p>- At first, it was hard to understand the process of solving least square methods by using the&nbsp;inverse matrix. ( argmin(Av-b)^2 -&gt; v = A\b)</p>
 <p>- The number of gradient calculations: (2*number of pixels) + 1</p>
-<p>- The error between original and reconstructed toy image was&nbsp;0+1.9947e-06i. Its order is 10^(-6). It is really negligible. So, we can say that the reconstructed one almost matches the original one.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1) x+1&nbsp; &nbsp; &nbsp;2) y+1&nbsp; &nbsp; 3)&nbsp; (1, 1)</p>
+<p>- The error between the original and reconstructed toy image was&nbsp;0+1.9947e-06i. Its order is 10^(-6). It is really negligible. So, we can say that the reconstructed one almost matches the original one.</p>
 <p>&nbsp;</p>
 <table style="margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
-<td><img src="\hw3_data\toy_problem.png" alt="" width="800" height="600" /></td>
-<td><img src="\hw3_data\toy_reconstructed.png" alt="" width="800" height="600" /></td>
+<td><img src="\hw3_data\toy_problem.png" alt="" width="80" height="100" /></td>
+<td><img src="\hw3_data\toy_reconstructed.png" alt="" width="80" height="100" /></td>
 </tr>
 <tr>
 <td>figure1. Original toy</td>
@@ -23,7 +24,7 @@
 <table style="margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
-<td>&nbsp;<img src="\hw3_data\toy_error.png" alt="" width="40" height="100" /></td>
+<td>&nbsp;<img src="\hw3_data\toy_error.png" alt="" width="100" height="40" /></td>
 </tr>
 <tr>
 <td>figure3. Error</td>
@@ -32,36 +33,75 @@
 </table>
 <p>&nbsp;</p>
 <h2>2) POISSON BLENDING</h2>
-<p>- 과제에서 요구하는 바와 같이 이미지 값을 0~1 사이로 변경시켜주었고, 그 결과는 아래와 같다.&nbsp;&nbsp;IDENTIFYING THE CORRECT BAYER PATTERN (20 POINTS)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<table style="height: 115px; width: 517px;">
+<p>- Inside the mask, gradient considers the object only. Outside the mask, gradient considers the background only.</p>
+<p>- Here, I defined bad condition as the cropped object acrosses many kinds of objects. In this example, the object meets tree, cloud, and snow (figure5.). So, it is a little awkward to see.</p>
+<p>- On the contrary, the good condition was defined as the cropped objects acrosses only one object. In this example, the object meets only snow (figure7.). So, it is very natural to see.</p>
+<p>&nbsp;</p>
+<table style="margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
-<td><img src="\hw1_data\linearized.jpg" alt="" width="600" height="400" /></td>
+<td style="text-align: center;"><img src="\hw3_data\PB_before_1.png" alt="" width="800" height="600" /></td>
+<td style="text-align: center;"><img src="\hw3_data\PB_after_1.jpg" alt="" width="80" height="100" /></td>
 </tr>
-<tr>
-<td>&nbsp;figure1. linearized.jpg</td>
+<tr style="text-align: center;">
+<td>figure4. Before blending (bad condition)</td>
+<td>figure5. After blending&nbsp;(bad condition)</td>
 </tr>
 </tbody>
 </table>
 <p>&nbsp;</p>
-<h2>3) MIXED BLENDING</h2>
-<p>- 이미지의 top-left 2*2와 'grbg', 'rggb', 'bggr', 'gbrg'의 2*2 매트릭스를 곱하여 총합을 계산하는 방식으로 어떤 bayer pattern이 이미지에 가장 적합한가를 판단하였다. figure2에서처럼 rggb가 가장 높은 값이 나와서 이를 bayer pattern으로 선택하였다.</p>
-<table style="text-align: center';">
+<table style="margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
-<td><img src="\hw1_data\bayerProp.png" alt="" /></td>
+<td><img src="\hw3_data\PB_before_2.png" alt="" width="800" height="600" /></td>
+<td><img src="\hw3_data\PB_after_2.jpg" alt="" width="800" height="600" /></td>
 </tr>
 <tr>
-<td>figure2. Probabilities of bayer patterns</td>
+<td>figure6. Before blending&nbsp;(good condition)</td>
+<td>figure7. After blending&nbsp;(good condition)</td>
 </tr>
 </tbody>
 </table>
-<p>&nbsp;</p>
-<h2><br />&nbsp;</h2>
-<h2>COMMENTS</h2>
-<p>선택한 bayer pattern에 따라 이미지가 전체적으로 붉은 빛을 띄거나, 초록 빛을 띄는 경우들이 있었다. 그 원인을 밝히지 못하였다. 따라서 최대한 하나의 rgb 색상 느낌이 강하게 나타나지 않도록 조정하였다.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><a href="index.html"><em><strong>Home</strong></em></a></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p style="text-align: left;">&nbsp;</p>
+<h2 style="text-align: left;">3) MIXED BLENDING</h2>
+<p style="text-align: left;">- Inside the mask, the gradient is chosen from the bigger candidates. The candidates are the object and the background.</p>
+<p style="text-align: left;">- At good condition, its result is more natural than poisson blending (i think). The texture of object follows background.</p>
+<p style="text-align: left;">- At bad condition, its result is more awkward than poisson blending&nbsp;(i think). It looks transparent.</p>
+<p style="text-align: center;">&nbsp;</p>
+<table style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align: center;"><img src="\hw3_data\PB_before_1.png" alt="" width="800" height="600" /></td>
+<td style="text-align: center;"><img src="\hw3_data\PB_after_1.jpg" alt="" width="80" height="100" /></td>
+</tr>
+<tr>
+<td>figure8. Before blending (bad condition)</td>
+<td>figure9. After blending&nbsp;(bad condition)</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;">&nbsp;</p>
+<table style="margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td><img src="\hw3_data\PB_before_2.png" alt="" width="800" height="600" /></td>
+<td><img src="\hw3_data\PB_after_2.jpg" alt="" width="800" height="600" /></td>
+</tr>
+<tr>
+<td>figure10. Before blending&nbsp;(good condition)</td>
+<td>figure11. After blending&nbsp;(good condition)</td>
+</tr>
+</tbody>
+</table>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<h2>4) MIXED BLENDING</h2>
+<p style="text-align: center;">&nbsp;</p>
+<h2 style="text-align: center;"><br />&nbsp;</h2>
+<h2 style="text-align: center;">COMMENTS</h2>
+<p style="text-align: center;">선택한 bayer pattern에 따라 이미지가 전체적으로 붉은 빛을 띄거나, 초록 빛을 띄는 경우들이 있었다. 그 원인을 밝히지 못하였다. 따라서 최대한 하나의 rgb 색상 느낌이 강하게 나타나지 않도록 조정하였다.</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><a href="index.html"><em><strong>Home</strong></em></a></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
