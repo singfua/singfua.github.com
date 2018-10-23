@@ -3,13 +3,15 @@
 <p>* My full codes are available at:&nbsp;</p>
 <p>&nbsp;</p>
 <h2>1) TOY PROBLEM</h2>
-<p>- 매트랩의 함수 imread를 통해 이미지를 img라는 변수에 저장시킨 후, 자료형을 double 형으로 변경하였다.</p>
+<p>- At first, it was hard to understand the process of solving least square methods by using the&nbsp;inverse matrix. ( argmin(Av-b)^2 -&gt; v = A\b)</p>
+<p>- The number of gradient calculations: (2*number of pixels) + 1</p>
+<p>- The error between original and reconstructed toy image was&nbsp;0+1.9947e-06i. Its order is 10^(-6). It is really negligible. So, we can say that the reconstructed one almost matches the original one.</p>
 <p>&nbsp;</p>
-<table>
+<table style="margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
-<td>&nbsp;</td>
-<td>&nbsp;</td>
+<td><img src="\hw3_data\toy_problem.png" alt="" width="800" height="600" /></td>
+<td><img src="\hw3_data\toy_reconstructed.png" alt="" width="800" height="600" /></td>
 </tr>
 <tr>
 <td>figure1. Original toy</td>
@@ -17,10 +19,11 @@
 </tr>
 </tbody>
 </table>
-<table>
+<p>&nbsp;</p>
+<table style="margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
-<td>&nbsp;</td>
+<td>&nbsp;<img src="\hw3_data\toy_error.png" alt="" width="40" height="100" /></td>
 </tr>
 <tr>
 <td>figure3. Error</td>
